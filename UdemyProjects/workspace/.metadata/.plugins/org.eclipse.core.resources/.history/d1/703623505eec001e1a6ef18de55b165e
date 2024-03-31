@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.vks.socialmedia.webservices.exception;
+
+/**
+ * @author Vikash
+ *
+ */
+public class UserNotFoundException extends Exception {
+
+	public UserNotFoundException(String message) {
+		super(message);
+	}
+
+}

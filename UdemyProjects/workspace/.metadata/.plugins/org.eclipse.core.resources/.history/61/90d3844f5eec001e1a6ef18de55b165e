@@ -1,0 +1,81 @@
+/**
+ * 
+ */
+package com.vks.socialmedia.webservices.user.controller;
+
+import java.nio.file.attribute.UserPrincipalNotFoundException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.vks.socialmedia.webservices.exception.UserNotFoundException;
+import com.vks.socialmedia.webservices.user.model.User;
+import com.vks.socialmedia.webservices.user.service.UserService;
+
+import jakarta.validation.Valid;
+
+/**
+ * @author Vikash
+ *
+ */
+@RestController
+@RequestMapping("/Users")
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@GetMapping("/users")
+	public ResponseEntity<List<User>> retriveAllUsers(){
+		List<User>  userlist = userService.getAllUsers();
+		return new  ResponseEntity<List<User>>(userlist , HttpStatus.ACCEPTED);
+		
+		
+	}
+	
+	@GetMapping("/users/{userId}")
+	public ResponseEntity<User> retriveUserByUserId(@PathVariable Long userId) throws UserNotFoundException{
+		User  user = userService.getUserById(userId);
+		if(user == null) {
+			
+			throw new UserNotFoundException("Unser Note Found For Id = " + userId );
+		}
+		return new  ResponseEntity<User>(user , HttpStatus.OK);
+		
+		
+	}
+	
+	@PostMapping("/users")
+	public ResponseEntity<User>   saveUser(@Valid  @RequestBody User user){
+		User userCreated = userService.createUser(user);
+		return new  ResponseEntity<User>(userCreated , HttpStatus.CREATED); 
+		
+	}
+	
+	@PutMapping("/users")
+	public ResponseEntity<User>   updateUser(@RequestBody User user){
+		User userUpdated = userService.updateUser(user);
+		return new  ResponseEntity<User>(userUpdated , HttpStatus.CREATED); 
+		
+	}
+	
+	
+	@GetMapping("/users/{userId}")
+	public ResponseEntity<User> deleteUserByUserId(@PathVariable Long userId){
+		userService.deleteUser(userId);
+		return new  ResponseEntity<User>(HttpStatus.OK);
+		
+		
+	}
+
+
+}

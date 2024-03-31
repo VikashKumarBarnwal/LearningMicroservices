@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+package com.vks.socialmedia.webservices.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.vks.socialmedia.webservices.user.model.User;
+
+/**
+ * @author Vikash
+ *
+ */
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+}

@@ -1,0 +1,22 @@
+package com.dailycodebuffer.ProductService.command.api.data;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.math.BigDecimal;
+
+@Data
+@Entity
+@Getter
+@Setter
+public class Product {
+
+    @Id
+    private String productId;
+    private String name;
+    private BigDecimal price;
+    private Integer quantity;
+}

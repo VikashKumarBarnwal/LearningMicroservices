@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.vks.socialmedia.webservices.user.beans;
+
+/**
+ * @author Vikash
+ *
+ */
+public class User {
+
+}

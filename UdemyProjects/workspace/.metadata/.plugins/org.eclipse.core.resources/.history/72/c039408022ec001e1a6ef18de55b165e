@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.vks.socialmedia.webservices.user.controller;
+
+/**
+ * @author Vikash
+ *
+ */
+public class UserController {
+
+}

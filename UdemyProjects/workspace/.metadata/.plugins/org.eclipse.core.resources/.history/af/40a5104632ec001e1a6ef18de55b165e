@@ -1,0 +1,39 @@
+/**
+ * 
+ */
+package com.vks.socialmedia.webservices.exception;
+
+import java.time.LocalDate;
+
+/**
+ * @author Vikash
+ *
+ */
+public class ExceptionDetails {
+  private LocalDate timestamp;
+  private String errorMessage ;
+  private String errorDetail;
+  
+  
+  
+public ExceptionDetails(LocalDate timestamp, String errorMessage, String errorDetail) {
+	super();
+	this.timestamp = timestamp;
+	this.errorMessage = errorMessage;
+	this.errorDetail = errorDetail;
+}
+
+
+
+public LocalDate getTimestamp() {
+	return timestamp;
+}
+public String getErrorMessage() {
+	return errorMessage;
+}
+public String getErrorDetail() {
+	return errorDetail;
+}
+  
+  
+}

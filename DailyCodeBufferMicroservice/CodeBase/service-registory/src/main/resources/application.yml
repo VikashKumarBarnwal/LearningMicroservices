@@ -1,0 +1,19 @@
+server:
+  port: 8761
+  
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+    
+spring:
+  application:
+    name: service-registory
+  cloud:
+    config:
+      enabled: false
+      uri: http://localhost:9296
+      
+     
+     
